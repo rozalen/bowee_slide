@@ -1,4 +1,3 @@
 bowee_slide
 ===========
-
-Bowee slide is a project for client subject
+Bowee slider is a project by a student of Web Application Development
