@@ -14,23 +14,16 @@ font-family: 'Droid Sans', sans-serif;
 .contenedor{
   position:relative;
   height:100%;
-  overflow:hidden;
   float:left;
   padding:0;
-}
-.container{
-  padding:0;
-}
-.diapositiva{
-  min-height:100%;
-  height:100%;
-  display:inline-block;
-  float:left;
-  overflow:hidden;
 }
 
-.titulo{
+.diapositiva{
+  min-height:100%;
+  display:inline-block;
+  float:left;
 }
+
 .titulo h1{
   font-size:5em;
   color:white;
@@ -44,4 +37,18 @@ margin-top:1.5em;}
 
 .cont_imgs{
   margin-top:4em;
+}
+
+.imagen1 img,.imagen2 img,.imagen3 img{
+  margin-bottom:2em;
+}
+
+
+
+/* Media queries*/
+
+@media screen and (max-width: 767px) {
+  .titulo h1{
+    margin:0;
+  }
 }
