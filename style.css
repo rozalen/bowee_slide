@@ -1,0 +1,47 @@
+html,body{
+  margin:0px;
+overflow-x:hidden;
+height:100%;
+color:white;
+font-size:1em;
+font-family: 'Droid Sans', sans-serif;
+
+}
+.wraper{
+  height:100%;
+}
+
+.contenedor{
+  position:relative;
+  height:100%;
+  overflow:hidden;
+  float:left;
+  padding:0;
+}
+.container{
+  padding:0;
+}
+.diapositiva{
+  min-height:100%;
+  height:100%;
+  display:inline-block;
+  float:left;
+  overflow:hidden;
+}
+
+.titulo{
+}
+.titulo h1{
+  font-size:5em;
+  color:white;
+font-family: 'Merriweather Sans', sans-serif;}
+.descripcion h2{
+  color:white;
+  font-size:3em;
+font-family: 'Merriweather Sans', sans-serif;}
+.descripcion{
+margin-top:1.5em;}
+
+.cont_imgs{
+  margin-top:4em;
+}
