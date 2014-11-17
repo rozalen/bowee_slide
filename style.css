@@ -43,7 +43,11 @@ margin-top:1.5em;}
   margin-bottom:2em;
 }
 
-
+form{
+  position:fixed;
+  bottom:0;
+  left:25em;
+}
 
 /* Media queries*/
 

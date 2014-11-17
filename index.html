@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>Bowee Slide</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -13,62 +14,59 @@
 <body id="body">
   <div class="wraper">
     <div class="contenedor">
-      <div class='diapositiva' style='background-color:rgba(100,100,200,1)'>
-        <div class='container'>
-          <div class='row'>
-            <div class='col-xs-12 col-md-4 titulo'>
-              <h1> Valencia</h1>
-            </div>
-            <div class='col-xs-12 col-md-8 descripcion'>
-              <h2>La capital del turia</h2> </div>
+
+      <form id="contacto" class="form"  method="POST" role="form">
+
+<div class="col-xs-12 col-sm-6">
+      <div class="form-group">
+          <div class="row">
+              <div class="col-xs-2 ">
+                  <span class="glyphicon glyphicon-pencil"></span>
+              </div>
+
+              <div class="col-xs-10 ">
+                  <input type="text" id="titulo"  name="titulo" class="form-control" placeholder="Introduce el titulo...">
+              </div>
           </div>
-          <div class='row'>
-            <div class='col-xs-12'>
-              <div>
-                <h3>Valencia la ciudad fallera situada al este de españa</h3>
-              </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-2 ">
+    <span class="glyphicon glyphicon-pencil"></span>
             </div>
-          </div>
-          <div class='row'>
-            <div class='cont_imgs'>
-              <div class='col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 imagen1'><img class='img-responsive' src='./img/valencia1.jpg'></img>
-              </div>
-              <div class='col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 imagen2'><img class='img-responsive' src='./img/valencia.jpeg'></img>
-              </div>
-              <div class='col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 imagen3'><img class='img-responsive' src='./img/paris.jpeg'></img>
-              </div>
+
+            <div class="col-xs-10 ">
+    <input type="text" class="form-control" id="subtitulo" name="subtitulo" placeholder="Introduce el subtitulo...">
             </div>
-          </div>
         </div>
-      </div>
-      <div class='diapositiva' style='background-color:rgba(100,100,200,1)'>
-        <div class='container'>
-          <div class='row'>
-            <div class='col-xs-12 col-md-4 titulo'>
-              <h1> Valencia</h1>
-            </div>
-            <div class='col-xs-12 col-md-8 descripcion'>
-              <h2>La capital del turia</h2> </div>
-          </div>
-          <div class='row'>
-            <div class='col-xs-12'>
-              <div>
-                <h3>Valencia la ciudad fallera situada al este de españa</h3>
-              </div>
-            </div>
-          </div>
-          <div class='row'>
-            <div class='cont_imgs'>
-              <div class='col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 imagen1'><img class='img-responsive' src='./img/valencia1.jpg'></img>
-              </div>
-              <div class='col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 imagen2'><img class='img-responsive' src='./img/valencia.jpeg'></img>
-              </div>
-              <div class='col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 imagen3'><img class='img-responsive' src='./img/paris.jpeg'></img>
-              </div>
-            </div>
-          </div>
+
+    </div>
+
+</div>
+<div class="col-xs-12 col-sm-6">
+
+
+<div class="form-group ">
+<div class="row">
+      <div class="col-xs-2 ">
+<span class="glyphicon glyphicon-pencil"> </span>
         </div>
+
+      <div class="col-xs-10">
+<textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion..." rows=" 5" maxlength="140"></textarea>
       </div>
+</div>
+</div>
+
+</div>
+
+<div class="col-xs-12 ">
+<button class="col-xs-12  btn btn-default" type="submit"><span class="glyphicon glyphicon-plus"></span>Añadir</button>
+
+</div>
+
+</form>
     </div>
 
 

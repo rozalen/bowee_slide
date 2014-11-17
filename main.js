@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  contador = 2;
+  contador = 0;
 
   function Box(title, sub_title, description, image1, image2, image3, color) {
       this.title = title;
@@ -10,26 +10,23 @@ $(document).ready(function() {
       this.image3 = image3;
       this.color = color;
       contador += 1;
-      $(".contenedor").append("<div class='diapositiva' style='background-color:rgba" + this.color + "'><div class='container'><div class='row'><div class='col-xs-12 col-sm-4 titulo'><h1> " + this.title + "</h1></div><div class='col-xs-12 col-sm-8 descripcion'><h2>" + this.sub_title + "</h2> </div> </div><div class='row'><div class='col-xs-12'> <div>  <h3>" + this.description + "</h3></div></div></div><div class='row'><div class='cont_imgs'><div class='col-xs-12 col-sm-4'><img class='img-responsive'src='./img/" + this.image1 + "'></img></div><div class='col-xs-12 col-sm-4'><img class='img-responsive'src='./img/" + this.image2 + "'></img></div><div class='col-xs-12 col-sm-4'><img class='img-responsive'src='./img/" + this.image3 + "'></img></div></div></div></div></div>")
-
+$(".contenedor").append("<div class='diapositiva' style='background-color:rgba" + this.color + "'><div class='container'><div class='row'> <div class='col-xs-12 col-md-4 titulo'><h1> " + this.title + "</h1></div> <div class='col-xs-12 col-md-8 descripcion'><h2>" + this.sub_title + "</h2> </div></div> <div class='row'><div class='col-xs-12'><div><h3>" + this.description + "</h3></div></div></div><div class='row'><div class='cont_imgs'><div class='col-xs-12 col-sm-4'><img class='img-responsive'src='./img/" + this.image1 + "'></img></div><div class='hidden-xs col-sm-4'><img class='img-responsive'src='./img/" + this.image2 + "'></img></div><div class='hidden-xs col-sm-4'><img class='img-responsive'src='./img/" + this.image3 + "'></img></div></div></div></div></div>");
     }
-    // valencia = new Box ("Valencia","La ciudad del Turia","Valencia famosa por su fiesta las Fallas","valencia.jpeg","valencia1.jpg","newyork.jpg","(248, 148, 6,1)");
+     valencia = new Box ("Valencia","La ciudad del Turia","Valencia famosa por su fiesta las Fallas","valencia.jpeg","valencia1.jpg","newyork.jpg","(248, 148, 6,1)");
+valencia2 = new Box ("Valencia","La ciudad del Turia","Valencia famosa por su fiesta las Fallas","valencia.jpeg","valencia1.jpg","newyork.jpg","(100, 100, 200,1)");
 
 
 
 
   var width_cont = 100 * contador;
 
-  // $(".contenedor").css({"width":width_cont +"%"});
-  $(".diapositiva").css({
-    "width": "50%"
-  });
+   $(".contenedor").css({"width":width_cont +"%"});
+
 
   var width_diapo = 100 / contador;
 
-  // $(".diapositiva").css({"width":width_diapo +"%"});
-  $(".contenedor").css({
-    "width": "200%"
+   $(".diapositiva").css({"width":width_diapo +"%"});
+
   });
 
   width = 0;
@@ -162,4 +159,3 @@ body.get('pan').set({ direction: Hammer.DIRECTION_ALL });
   /* Muestra o no muestra las imagenes segun el tamaño de la pantalla*/
   /* Al hacer resize sobre la pantalla tambien mostrara o no mostrara las imagenes*/
   /*###############   Fin    ###############*/
-});
