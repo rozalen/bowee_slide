@@ -11,12 +11,14 @@ function Box(title, sub_title, description, image1, image2, image3, color) {
 }
 $(document).ready(function() {
   contador = 0;
-
+width = 0;
+cuenta = 0;
 
   valencia = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su fiesta las Fallas", "valencia.jpeg", "valencia1.jpg", "newyork.jpg", "#BBB");
   valencia2 = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su fiesta las Fallas", "valencia.jpeg", "valencia1.jpg", "newyork.jpg", "#CCC");
   valencia23 = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su fiesta las Fallas", "valencia.jpeg", "valencia1.jpg", "newyork.jpg", "#CCC");
-valencia42 = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su fiesta las Fallas", "valencia.jpeg", "valencia1.jpg", "newyork.jpg", "#CCC");
+  valencia42 = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su fiesta las Fallas", "valencia.jpeg", "valencia1.jpg", "newyork.jpg", "#CCC");
+  valencia4s2 = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su fiesta las Fallas", "valencia.jpeg", "valencia1.jpg", "newyork.jpg", "#CCC");
 
   width_cont = 100 * contador;
 
@@ -56,7 +58,8 @@ valencia42 = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su 
   }
   $('.boton_add').on("click", function() {
     if (validarForm()) {
-      nuevo = new Box($("#titulo").val(), $("#subtitulo").val(), $("#descripcion").val(), "valencia.jpeg", "berlin.jpg", "newyork.jpg",  $("#color_picker").val());
+      cuenta=$(".diapositiva").length;
+      nuevo = new Box($("#titulo").val(), $("#subtitulo").val(), $("#descripcion").val(), "valencia.jpeg", "berlin.jpg", "newyork.jpg", $("#color_picker").val());
       width_cont = 100 * contador;
 
       $(".contenedor").css({
@@ -69,6 +72,11 @@ valencia42 = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su 
       $(".diapositiva").css({
         "width": width_diapo + "%"
       });
+width=-width_cont+100;
+      $(".contenedor").animate({
+        "margin-left": width+"%"
+      });
+      console.log(cuenta, width_cont);
     };
 
   });
@@ -95,111 +103,121 @@ valencia42 = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su 
 
 
 
-width = 0;
-cuenta = 0;
-
-/* Las siguientes funciones haran que bowee_slide sea compatible con pantallas tactiles
-y no sea necesario el  uso de las flechas para navegar por nuestro slide*/
-var myElement = document.getElementById('body');
-
-// create a simple instance
-// by default, it only adds horizontal recognizers
-var body = new Hammer(myElement);
-
-// let the pan gesture support all directions.
-// this will block the vertical scrolling on a touch-device while on the element
-body.get('pan').set({
-  direction: Hammer.DIRECTION_ALL
-});
-
-// listen to events...
 
 
-/* Al arrastrar  hacia la izquierda*/
-body.on("panleft", function() {
-  console.log(cuenta,width);
+  /* Las siguientes funciones haran que bowee_slide sea compatible con pantallas tactiles
+  y no sea necesario el  uso de las flechas para navegar por nuestro slide*/
+  var myElement = document.getElementById('body');
 
-  if (cuenta == $(".diapositiva").length - 1) {
-    /*  Estamos en la ultima diapositiva */
-  } else {
-    width -= 100;
-    cuenta++;
-    $(".contenedor").animate({
-      "margin-left": width + "%"
-    });
-  }
-});
+  // create a simple instance
+  // by default, it only adds horizontal recognizers
+  var body = new Hammer(myElement);
 
-/* Al arrastrar hacia la derecha*/
+  // let the pan gesture support all directions.
+  // this will block the vertical scrolling on a touch-device while on the element
+  body.get('swipe').set({
+    direction: Hammer.DIRECTION_ALL,
+  });
 
-body.on("panright", function() {
-  console.log(cuenta,width);
-
-  if (cuenta == $(".diapositiva").length - (contador)) {
-    /*  Estamos en la Primera diapositiva */
-  } else {
-    cuenta--;
-    width += 100;
-
-    $(".contenedor").animate({
-      "margin-left": width + "%"
-    });
-
-  }
-});
-/* Las anteriores funciones haran que bowee_slide sea compatible con pantallas tactiles
-y no sea necesario el  uso de las flechas para navegar por nuestro slide*/
-
-/* La siguiente funcion haran que bowee_slide sea navegable con las flechas*/
-$("body", "html").on("keyup", function(event) {
-  switch (event.keyCode) {
-    /*38 arriba y 40 abajo*/
-    /* codigo ASCII 39 significa que hemos pulsado la flecha derecha*/
-    case 39:
-      console.log(cuenta);
-
-      if (cuenta == $(".diapositiva").length - 1) {
-        /*  Estamos en la ultima diapositiva */
-
-      } else {
-        width -= 100;
-        cuenta++;
-        $(".contenedor").animate({
-          "margin-left": width + "%"
-        });
-      }
-      break;
-    case 37:
-      /* codigo ASCII 37 significa que hemos pulsado la flecha izquierda*/
-      console.log(cuenta);
-      if (cuenta == $(".diapositiva").length - (contador)) {
-        /*  Estamos en la primera diapositiva */
-      } else {
-        cuenta--;
-        width += 100;
-
-        $(".contenedor").animate({
-          "margin-left": width + "%"
-        });
-      }
-      break;
-
-    case 38:
-      /* codigo ASCII 38 significa que hemos pulsado la flecha arriba*/
-      $(".form").fadeOut();
-      console.log("arriba");
-
-      break;
-    case 40:
-      /* codigo ASCII 40 significa que hemos pulsado la flecha abajo*/
-      $(".form").fadeIn();
-
-      break;
-  }
+  // listen to events...
 
 
+  /* Al arrastrar  hacia la izquierda*/
+  body.on("swipeleft", function() {
+    console.log(cuenta, width);
 
-});
+    if (cuenta == $(".diapositiva").length) {
+      /*  Estamos en la ultima diapositiva */
+    } else {
+      width = width - 100;
+      cuenta++;
+      $(".contenedor").animate({
+        "margin-left": width + "%"
+      });
+    }
+  });
+
+  /* Al arrastrar hacia la derecha*/
+
+  body.on("swiperight", function() {
+    console.log(cuenta, width);
+
+    if (cuenta == $(".diapositiva").length - (contador)) {
+      /*  Estamos en la Primera diapositiva */
+    } else {
+      cuenta--;
+      width = width + 100;
+
+      $(".contenedor").animate({
+        "margin-left": width + "%"
+      });
+
+    }
+  });
+  /* Al arrastrar hacia arriba escondemos el formulario*/
+  body.on("swipeup", function() {
+    $(".form").fadeOut();
+    console.log("arriba");
+
+  });
+  /*Al arrastrar hacia bajo mostramos el formulario*/
+  body.on("swipedown", function() {
+    $(".form").fadeIn();
+    console.log("abajo");
+  });
+  /* Las anteriores funciones haran que bowee_slide sea compatible con pantallas tactiles
+  y no sea necesario el  uso de las flechas para navegar por nuestro slide*/
+
+  /* La siguiente funcion haran que bowee_slide sea navegable con las flechas*/
+  $("body", "html").on("keyup", function(event) {
+    switch (event.keyCode) {
+      /*38 arriba y 40 abajo*/
+      /* codigo ASCII 39 significa que hemos pulsado la flecha derecha*/
+      case 39:
+        console.log(cuenta);
+
+        if (cuenta == $(".diapositiva").length - 1) {
+          /*  Estamos en la ultima diapositiva */
+
+        } else {
+          width -= 100;
+          cuenta++;
+          $(".contenedor").animate({
+            "margin-left": width + "%"
+          });
+        }
+        break;
+      case 37:
+        /* codigo ASCII 37 significa que hemos pulsado la flecha izquierda*/
+        console.log(cuenta);
+        if (cuenta == $(".diapositiva").length - (contador)) {
+          /*  Estamos en la primera diapositiva */
+        } else {
+          cuenta--;
+          width = width + 100;
+
+          $(".contenedor").animate({
+            "margin-left": width + "%"
+          });
+        }
+        break;
+
+      case 38:
+        /* codigo ASCII 38 significa que hemos pulsado la flecha arriba*/
+        $(".form").fadeOut();
+        console.log("arriba");
+
+        break;
+      case 40:
+        /* codigo ASCII 40 significa que hemos pulsado la flecha abajo*/
+        $(".form").fadeIn();
+
+        break;
+    }
+
+
+
+  });
 });
 
 /*###############   Inicio    ###############*/
