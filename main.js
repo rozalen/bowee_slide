@@ -7,18 +7,20 @@ function Box(title, sub_title, description, image1, image2, image3, color) {
   this.image3 = image3;
   this.color = color;
   contador += 1;
-  $(".contenedor").append("<div class='diapositiva' style='background-color:" + this.color + "'><div class='container'><div class='row'> <div class='col-xs-12 col-md-4 titulo'><h1> " + this.title + "</h1></div> <div class='col-xs-12 col-md-8 descripcion'><h2>" + this.sub_title + "</h2> </div></div> <div class='row'><div class='col-xs-12'><div><h3>" + this.description + "</h3></div></div></div><div class='row'><div class='cont_imgs'><div class='col-xs-12 col-sm-4'><img class='img-responsive'src='./img/" + this.image1 + "'></img></div><div class='hidden-xs col-sm-4'><img class='img-responsive'src='./img/" + this.image2 + "'></img></div><div class='hidden-xs col-sm-4'><img class='img-responsive'src='./img/" + this.image3 + "'></img></div></div></div></div></div>");
+  $(".contenedor").append("<div class='diapositiva' style='background-color:" + this.color + "'><div class='container'><div class='row'> <div class='col-xs-12 col-md-4 titulo'><h1> " + this.title + "</h1></div> <div class='col-xs-12 col-md-8 descripcion'><h2>" + this.sub_title + "</h2> </div></div> <div class='row'><div class='col-xs-12'><div><h3>" + this.description + "</h3></div></div></div><div class='row'><div class='cont_imgs'><div class='col-xs-12 col-sm-4 imagen1'><img class='img-responsive ' src='"+ this.image1+"'></img></div><div class='hidden-xs col-sm-4 imagen2'><img class='img-responsive'src='" + this.image2 + "'></img></div><div class='hidden-xs col-sm-4 imagen3'><img class='img-responsive'src='" + this.image3 + "'></img></div></div></div></div></div>");
 }
 $(document).ready(function() {
   contador = 0;
 width = 0;
 cuenta = 0;
+  valencia2 = new Box("Valencia", "España", "Valencia famosa por su fiesta las Fallas", "http://sergiorozalen.tk/bowee/img/valencia1.jpg", "http://sergiorozalen.tk/bowee/img/valencia.jpeg", "http://sergiorozalen.tk/bowee/img/valencia3.jpg", "#9b59b6");
+  newyork = new Box("NewYork", "Estados Unidos", "NY la ciudad de los artistas", "http://sergiorozalen.tk/bowee/img/newyork.jpg", "http://sergiorozalen.tk/bowee/img/newyork2.jpg", "http://sergiorozalen.tk/bowee/img/newyork3.jpeg", "#3498db");
+  amsterdam = new Box("Amsterdam", "Holanda", "Amsterdam es famosa por sus Coffe Shops", "http://sergiorozalen.tk/bowee/img/amsterdam1.jpeg", "http://sergiorozalen.tk/bowee/img/amsterdam2.jpeg", "http://sergiorozalen.tk/bowee/img/amsterdam3.jpg", "#f39c12");
+berlin = new Box("Berlin", "Alemanía", "Berlín famosa por haber estado dividida hasta la caida del muro", "http://sergiorozalen.tk/bowee/img/berlin.jpeg", "http://sergiorozalen.tk/bowee/img/berlin2.jpeg", "http://sergiorozalen.tk/bowee/img/berlin3.jpeg", "#27ae60");
+londres = new Box("Londres", "Reino Unido", "Capital Financiera de Europa", "http://sergiorozalen.tk/bowee/img/london.jpg", "http://sergiorozalen.tk/bowee/img/london2.jpeg", "http://sergiorozalen.tk/bowee/img/londres.jpg", "#e74c3c");
 
-  valencia = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su fiesta las Fallas", "valencia.jpeg", "valencia1.jpg", "newyork.jpg", "#BBB");
-  valencia2 = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su fiesta las Fallas", "valencia.jpeg", "valencia1.jpg", "newyork.jpg", "#CCC");
-  valencia23 = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su fiesta las Fallas", "valencia.jpeg", "valencia1.jpg", "newyork.jpg", "#CCC");
-  valencia42 = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su fiesta las Fallas", "valencia.jpeg", "valencia1.jpg", "newyork.jpg", "#CCC");
-  valencia4s2 = new Box("Valencia", "La ciudad del Turia", "Valencia famosa por su fiesta las Fallas", "valencia.jpeg", "valencia1.jpg", "newyork.jpg", "#CCC");
+
+
 
   width_cont = 100 * contador;
 
@@ -59,7 +61,7 @@ cuenta = 0;
   $('.boton_add').on("click", function() {
     if (validarForm()) {
       cuenta=$(".diapositiva").length;
-      nuevo = new Box($("#titulo").val(), $("#subtitulo").val(), $("#descripcion").val(), "valencia.jpeg", "berlin.jpg", "newyork.jpg", $("#color_picker").val());
+      nuevo = new Box($("#titulo").val(), $("#subtitulo").val(), $("#descripcion").val(), $("#input_imagen1").val(), $("#input_imagen2").val(), $("#input_imagen3").val(), $("#color_picker").val());
       width_cont = 100 * contador;
 
       $(".contenedor").css({
@@ -126,33 +128,34 @@ width=-width_cont+100;
   body.on("swipeleft", function() {
     console.log(cuenta, width);
 
-    if (cuenta == $(".diapositiva").length) {
-      /*  Estamos en la ultima diapositiva */
-    } else {
-      width = width - 100;
-      cuenta++;
-      $(".contenedor").animate({
-        "margin-left": width + "%"
-      });
-    }
+
+        if (cuenta == $(".diapositiva").length - 1) {
+          /*  Estamos en la ultima diapositiva */
+
+        } else {
+          width -= 100;
+          cuenta++;
+          $(".contenedor").animate({
+            "margin-left": width + "%"
+          });
+        }
   });
 
   /* Al arrastrar hacia la derecha*/
 
   body.on("swiperight", function() {
-    console.log(cuenta, width);
 
-    if (cuenta == $(".diapositiva").length - (contador)) {
-      /*  Estamos en la Primera diapositiva */
-    } else {
-      cuenta--;
-      width = width + 100;
+console.log(cuenta);
+if (cuenta == $(".diapositiva").length - (contador)) {
+  /*  Estamos en la primera diapositiva */
+} else {
+  cuenta--;
+  width = width + 100;
 
-      $(".contenedor").animate({
-        "margin-left": width + "%"
-      });
-
-    }
+  $(".contenedor").animate({
+    "margin-left": width + "%"
+  });
+}
   });
   /* Al arrastrar hacia arriba escondemos el formulario*/
   body.on("swipeup", function() {

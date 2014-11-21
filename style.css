@@ -25,12 +25,12 @@ font-family: 'Droid Sans', sans-serif;
 }
 
 .titulo h1{
-  font-size:5em;
+  font-size:3.5em;
   color:white;
 font-family: 'Merriweather Sans', sans-serif;}
 .descripcion h2{
   color:white;
-  font-size:3em;
+  font-size:2.5em;
 font-family: 'Merriweather Sans', sans-serif;}
 .descripcion{
 margin-top:1.5em;}
@@ -40,7 +40,8 @@ margin-top:1.5em;}
 }
 
 .imagen1 img,.imagen2 img,.imagen3 img{
-  margin-bottom:2em;
+  height:15em;
+  margin:0 auto;
 }
 
 .form{
@@ -80,6 +81,9 @@ textarea{
 }
 .form .fondo form .boton_add:hover{
 
+}
+.alert{
+  padding:0;
 }
 /* Media queries*/
 
