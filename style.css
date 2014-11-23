@@ -85,6 +85,18 @@ textarea{
 .alert{
   padding:0;
 }
+
+.menu{
+  position:fixed;
+  bottom:0;
+  right:0;
+  background-color:rgba(0,0,0,0.4);
+  padding:1em;
+  width:60%;
+  border-top-left-radius:0.4em;
+  color:white;
+  z-index:800;
+}
 /* Media queries*/
 
 @media screen and (max-width: 767px) {
